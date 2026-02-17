@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <div class="overlay">
+    <h1 class="coming-soon" id="comingSoon">Coming Soon</h1>
+    <p class="construction fade-in delay-1">Our site is under construction</p>
+  </div>
+
+  <footer>
+    <p>© 2026 SupremeBuilders | <a href="mailto:info@supremebuilders.us">info@supremebuilders.us</a></p>
+    <p>📞 718-879-8777 | 📍 5 Amber Ridge Rd, Spring Valley, NJ 10977</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/supreme_builders" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/supremebuildersus" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    // Animate "Coming Soon" letter by letter with bounce
+    const text = "Coming Soon";
+    const container = document.getElementById("comingSoon");
+    container.textContent = "";
+
+    text.split("").forEach((char, i) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.style.display = "inline-block";
+      span.style.opacity = 0;
+      span.style.animation = `letterBounce 0.6s forwards`; // stays visible
+      span.style.animationDelay = `${i * 0.15 + 1}s`; // after background fade-in
+      container.appendChild(span);
+    });
+  </script>
+</body>
+</html>
