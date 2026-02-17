@@ -5,107 +5,103 @@
   box-sizing: border-box;
 }
 
-/* Body with background image */
-body {
-  height: 100vh;
+/* Full viewport and flex layout */
+body, html {
+  height: 100%;
   width: 100%;
   font-family: Arial, sans-serif;
-  background-image: url('images/good.png');
-  background-size: cover;          /* fill screen */
-  background-position: top center; /* top logo visible */
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-  opacity: 0;
-  animation: fadeInBackground 1s forwards; /* fade in background */
+  overflow: hidden; /* prevent scroll while animating */
 }
 
-/* Overlay for content */
+/* Background container */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/Good.png');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: bgFade 3s forwards;
+  z-index: -1;
+}
+
+/* Overlay: full height, flex layout to center content */
 .overlay {
-  flex: 1;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center;  /* center the main content */
   align-items: center;
-  padding: 20px;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  padding: 40px 20px 100px 20px; /* extra bottom padding for footer space */
+}
+
+
+/* Content in the vertical center */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 }
 
 /* Coming Soon letters */
 .coming-soon {
   color: #000;
-  font-size: 6rem; /* big letters */
+  font-size: 6rem;
   font-weight: bold;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
-.coming-soon span {
-  opacity: 0;
-}
-
-/* Letter bounce animation */
 @keyframes letterBounce {
-  0% {
-    opacity: 0;
-    transform: translateY(-50px);
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(10px);
-  }
-  80% {
-    transform: translateY(-5px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(-30px); }
+  60% { opacity: 1; transform: translateY(10px); }
+  80% { transform: translateY(-5px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Fade in background */
-@keyframes fadeInBackground {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Construction text styling */
+/* Construction text */
 .construction {
-  font-size: 2.5rem;        /* bigger */
+  font-size: 2.5rem;
   font-weight: bold;
-  color: #000;              /* black text */
-  text-shadow: 2px 2px 8px #fff; /* white glow */
+  color: #000;
+  text-shadow: 2px 2px 8px rgba(255,255,255,0.5);
   margin-top: 10px;
   opacity: 0;
-  animation: slideFade 1.5s forwards;
+  animation: fadeInText 1.5s forwards;
+  animation-delay: 3s;
 }
 
-.delay-1 {
-  animation-delay: 3s; /* after letters finish */
+@keyframes fadeInText {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes slideFade {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Background fade */
+@keyframes bgFade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-/* Footer strip */
+/* Footer styling */
 footer {
-  width: 100%;
-  background-color: #000; /* black strip */
+  position: absolute;   /* pin it at the bottom */
+  bottom: 0;
+  left: 0;
+  width: 100%;          /* span entire width */
+  background-color: rgba(0,0,0,0.7);
   color: #fff;
   text-align: center;
   padding: 15px 0;
   font-size: 0.9rem;
+  z-index: 2;           /* above background */
 }
 
 footer a {
@@ -117,9 +113,33 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* All footer icons white by default *//
+footer i {
+  margin-right: 8px;
+  color: #fff;      /* default white */
+  transition: all 0.3s ease;
+}
+
+/* LinkedIn icon hover */
+.social-icons a:hover .fa-linkedin {
+  color: #0077B5;  /* LinkedIn blue */
+}
+
+/* Instagram icon gradient hover */
+.social-icons a:hover .fa-instagram {
+  color: transparent;  /* needed for gradient to show */
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+
+
 footer p {
   margin: 5px 0;
+  font-size: 0.9rem;
 }
+
 
 .social-icons {
   margin-top: 5px;
@@ -132,11 +152,9 @@ footer p {
   transition: color 0.3s;
 }
 
-.social-icons a:hover {
-  color: #ffd700;
-}
 
-/* Responsive adjustments */
+
+/* Responsive */
 @media (max-width: 768px) {
   .coming-soon {
     font-size: 3rem;
@@ -148,5 +166,3 @@ footer p {
     font-size: 1.2rem;
   }
 }
-
-
