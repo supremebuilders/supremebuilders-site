@@ -20,14 +20,19 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('images/Good.png');
+  background: url('images/Good.png') no-repeat top center;
   background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  animation: bgFade 3s forwards;
+  background-color: #000; /* fallback */
+  opacity: 1; /* default visible */
+  animation: bgFade 2s ease-in-out;
   z-index: -1;
 }
+
+@keyframes bgFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 
 /* Overlay: full height, flex layout to center content */
 .overlay {
@@ -84,11 +89,6 @@ body, html {
   100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Background fade */
-@keyframes bgFade {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
 
 /* Footer styling */
 footer {
@@ -113,7 +113,7 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* All footer icons white by default *//
+/* All footer icons white by default */
 footer i {
   margin-right: 8px;
   color: #fff;      /* default white */
