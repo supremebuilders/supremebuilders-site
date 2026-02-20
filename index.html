@@ -45,12 +45,13 @@ document.addEventListener("DOMContentLoaded", function () {
     span.textContent = char;
     span.style.display = "inline-block";
     span.style.opacity = 0;
-    span.style.animation = "letterBounce 0.7s forwards";
-    span.style.animationDelay = (i * 0.15 + 1.5) + "s";
+    span.style.animation = "letterBounce 0.7s forwards ease-out";
+    span.style.animationDelay = (i * 0.15) + "s";
     container.appendChild(span);
   });
 });
 </script>
+
 
 
 </body>
