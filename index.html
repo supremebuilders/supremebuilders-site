@@ -31,21 +31,22 @@
 
   </div>
 
-  <script>
-    // Animate "Coming Soon" letter by letter
-    const text = "Coming Soon";
-    const container = document.getElementById("coming Soon");
-    container.textContent = "";
+<script>
+  const text = "Coming Soon";
+  const container = document.getElementById("comingSoon");
 
-    text.split("").forEach((char, i) => {
-      const span = document.createElement("span");
-      span.textContent = char;
-      span.style.display = "inline-block";
-      span.style.opacity = 0;
-      span.style.animation = `letterBounce 0.7s forwards`;
-      span.style.animationDelay = `${i * 0.15 + 1.5}s`; // letters start shortly after background
-      container.appendChild(span);
-    });
-  </script>
+  container.textContent = "";
+
+  text.split("").forEach((char, i) => {
+    const span = document.createElement("span");
+    span.textContent = char;
+    span.style.display = "inline-block";
+    span.style.opacity = 0;
+    span.style.animation = "letterBounce 0.7s forwards";
+    span.style.animationDelay = (i * 0.15 + 1.5) + "s";
+    container.appendChild(span);
+  });
+</script>
+
 </body>
 </html>
