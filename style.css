@@ -20,7 +20,7 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url('images/Good.png') no-repeat top center;
+  background: url('images/Good.png?v=2') no-repeat top center;
   background-size: cover;
   background-color: #000; /* fallback */
   opacity: 1; /* default visible */
